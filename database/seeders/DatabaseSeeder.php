@@ -18,6 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->call(Requirements::class);
         $this->call(Benefits::class);
         $this->call(Applicats::class);
+        $this->call(TalentPools::class);
+        $this->call(Candidates::class);
+        $this->call(Users::class);
 
     }
 }

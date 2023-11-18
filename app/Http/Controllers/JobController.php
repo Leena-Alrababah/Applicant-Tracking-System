@@ -3,14 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\JobsDataTable;
+use App\Models\Applicant;
 use App\Models\Job;
 use App\Traits\ImageUploadTrait;
+use App\Traits\ResumeUploadTrait;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class JobController extends Controller
 {
     use ImageUploadTrait;
+    use ResumeUploadTrait;
+
 
     /**
      * Display a listing of the resource.
@@ -82,11 +86,69 @@ class JobController extends Controller
      * @param  \App\Models\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function show(Job $job)
+    public function show()
     {
-        //
+        $jobs = Job::all();
+
+        return view('front-end.index', compact('jobs'));
     }
 
+    public function showSingleJop($id)
+    {
+        $job = Job::with(['benefits', 'requirements'])->findOrFail($id);
+
+        return view('front-end.singleJob', compact('job'));
+    }
+
+    public function showApplicationForm($id)
+    {
+        // Retrieve the job details based on the provided ID
+        $job = Job::findOrFail($id);
+
+        // You can pass additional data to the view if needed
+
+        return view('front-end.applyForm', compact('job'));
+    }
+
+    public function submitApplicationForm(Request $request, $id)
+    {
+        $request->validate([
+            'name' => ['required', 'max:255'],
+            'email' => ['required', 'email', 'unique:applicants'],
+            'phone' => ['nullable', 'max:20'],
+            'linkedin_profile' => ['required', 'url'],
+            'resume' => ['required', 'file', 'mimes:pdf,doc,docx'],
+            'job_id' => ['required', 'exists:jobs,id'],
+        ]);
+
+        $applicant = new Applicant();
+
+        // if ($request->hasFile('resume')) {
+        //     $resumePath = $this->uploadResume($request, 'resume', 'resumes');
+        //     $applicant->resume = $resumePath;
+        // }
+        $filename = '';
+
+        if ($request->hasFile('resume')) {
+            $filename = $request->getSchemeAndHttpHost() . '/resumes/' . time() . '.' . $request->resume->extension();
+            $request->resume->move(public_path('/resumes/'), $filename);
+        } 
+
+        $applicant->resume = $filename;
+
+        $applicant->name = $request->name;
+        $applicant->email = $request->email;
+        $applicant->phone = $request->phone;
+        $applicant->linkedin_profile = $request->linkedin_profile;
+        $applicant->job_id = $id;
+
+        $applicant->save();
+
+        
+        Alert::success('Success', 'Application confirmed!');
+
+        return redirect()->back();
+    } 
     /**
      * Show the form for editing the specified resource.
      *

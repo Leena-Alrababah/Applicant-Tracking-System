@@ -19,8 +19,35 @@ class Jobs extends Seeder
             'title' => 'Software Engineer',
             'description' => 'We are looking for a skilled software engineer...',
             'location' => 'Amman, Jordan',
-            'image' => 'no-image.jpg', // Replace with the actual path to an image
+            'image' => 'no-image.jpg', 
             'application_deadline' => now()->addWeek(),
+            'status' => 'open',
+        ]);
+
+        Job::create([
+            'title' => 'Frontend Developer',
+            'description' => 'Join our team as a frontend developer and create amazing user interfaces.',
+            'location' => 'Remote',
+            'image' => 'no-image.jpg', 
+            'application_deadline' => now()->addWeeks(2),
+            'status' => 'open',
+        ]);
+
+        Job::create([
+            'title' => 'Data Scientist',
+            'description' => 'Exciting opportunity for a data scientist to work on cutting-edge projects.',
+            'location' => 'San Francisco, USA',
+            'image' => 'no-image.jpg', 
+            'application_deadline' => now()->addWeeks(3),
+            'status' => 'open',
+        ]);
+
+        Job::create([
+            'title' => 'UI/UX Designer',
+            'description' => 'We are seeking a talented UI/UX designer to join our creative team.',
+            'location' => 'London, UK',
+            'image' => 'no-image.jpg', 
+            'application_deadline' => now()->addWeeks(4),
             'status' => 'open',
         ]);
 

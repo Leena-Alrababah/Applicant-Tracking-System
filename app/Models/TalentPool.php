@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class TalentPool extends Model
 {
     use HasFactory;
+    protected $fillable = ['title', 'role', 'location', 'skill', 'experience'];
+
+
+    public function candidates()
+    {
+        return $this->hasMany(Candidate::class);
+    }
 }

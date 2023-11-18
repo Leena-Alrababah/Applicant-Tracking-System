@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\TalentPoolsDataTable;
 use App\Models\TalentPool;
 use Illuminate\Http\Request;
 
@@ -12,10 +13,11 @@ class TalentPoolController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(TalentPoolsDataTable $dataTable)
     {
-        //
+        return $dataTable->render('admin.pages.talentPools.index');
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +26,8 @@ class TalentPoolController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.talentPools.create');
+
     }
 
     /**
@@ -35,7 +38,29 @@ class TalentPoolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => ['required', 'max:255'],
+            'role' => ['required', 'max:255'],
+            'location' => ['required', 'max:255'],
+            'skill' => ['required', 'max:255'],
+            'experience' => ['required', 'max:255'],
+        ]);
+
+        $talentPool = new TalentPool();
+
+        $talentPool->title = $request->title;
+        $talentPool->role = $request->role;
+        $talentPool->location = $request->location;
+        $talentPool->skill = $request->skill;
+        $talentPool->experience = $request->experience;
+        $talentPool->save();
+
+        $notification = [
+            'message' => 'New Talent Pool Created Successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('talentpools.index')->with($notification);
     }
 
     /**
@@ -55,9 +80,10 @@ class TalentPoolController extends Controller
      * @param  \App\Models\TalentPool  $talentPool
      * @return \Illuminate\Http\Response
      */
-    public function edit(TalentPool $talentPool)
+    public function edit($id)
     {
-        //
+        $talentPool = TalentPool::findOrFail($id);
+        return view('admin.pages.talentPools.edit', compact('talentPool'));
     }
 
     /**
@@ -67,19 +93,44 @@ class TalentPoolController extends Controller
      * @param  \App\Models\TalentPool  $talentPool
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TalentPool $talentPool)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        $request->validate([
+            'title' => ['required', 'max:255'],
+            'role' => ['required', 'max:255'],
+            'location' => ['required', 'max:255'],
+            'skill' => ['required', 'max:255'],
+            'experience' => ['required', 'max:255'],
+        ]);
 
+        $talentPool = TalentPool::findOrFail($id);
+
+        
+        $talentPool->title = $request->title;
+        $talentPool->role = $request->role;
+        $talentPool->location = $request->location;
+        $talentPool->skill = $request->skill;
+        $talentPool->experience = $request->experience;
+        $talentPool->save();
+
+        $notification = [
+            'message' => 'Talent Pool Updated Successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('talentpools.index')->with($notification);
+    }
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\TalentPool  $talentPool
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TalentPool $talentPool)
+    public function destroy($id)
     {
-        //
+        $talentPool = TalentPool::findOrFail($id);
+        $talentPool->delete();
+
+        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 }

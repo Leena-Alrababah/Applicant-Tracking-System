@@ -319,25 +319,25 @@
                         </footer>
                     </div>
                 </li>
-                {{-- @php
+                @php
                     $id = Auth::user()->id;
                     $profileData = App\Models\User::findOrFail($id);
-                @endphp --}}
+                @endphp
                 <!-- User Account -->
                 <li class="dropdown user-menu">
                     <button class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        {{-- <img src="{{ !empty($profileData->image) ? asset($profileData->image) : url('no_image.png') }}" --}}
+                        <img src="{{ !empty($profileData->image) ? asset($profileData->image) : url('no-admin-image.png') }}"
                             class="user-image rounded-circle" alt="User Image" />
-                        {{-- <span class="d-none d-lg-inline-block">{{ $profileData->name }}</span> --}}
+                        <span class="d-none d-lg-inline-block">{{ $profileData->name }}</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li>
-                            {{-- <a class="dropdown-link-item" href="{{ route('profile') }}"> --}}
+                            <a class="dropdown-link-item" href="{{ route('profile.edit') }}">
                                 <i class="mdi mdi-account-outline"></i>
                                 <span class="nav-text">My Profile</span>
                             </a>
                         </li>
-                        {{-- <li class="dropdown-footer">
+                        <li class="dropdown-footer">
                             <a class="dropdown-link-item"
                                 onclick="event.preventDefault();document.getElementById('adminLogoutForm').submit();"
                                 href="{{ route('logout') }}"> <i class="mdi mdi-logout"></i>
@@ -345,7 +345,7 @@
                             </a>
                             <form action="{{ route('logout') }}" id="adminLogoutForm" method="POST">
                                 @csrf</form>
-                        </li> --}}
+                        </li>
                     </ul>
                 </li>
             </ul>

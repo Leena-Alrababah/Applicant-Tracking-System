@@ -1,0 +1,48 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+.job-details {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.job-image {
+    width: 20%;
+    height: auto;
+}
+
+.job-content {
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #666;
+}
+
+strong {
+    font-weight: bold;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+ul li {
+    margin-bottom: 5px;
+}
+

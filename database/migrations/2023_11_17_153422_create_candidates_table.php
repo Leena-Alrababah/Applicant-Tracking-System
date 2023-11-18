@@ -15,12 +15,15 @@ return new class extends Migration
     {
         Schema::create('candidates', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('applicant_id');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('phone')->nullable();
+            $table->string('linkedin_profile');
+            $table->text('resume');
             $table->unsignedBigInteger('talent_pool_id');
 
             $table->timestamps();
 
-            $table->foreign('applicant_id')->references('id')->on('applicants');
             $table->foreign('talent_pool_id')->references('id')->on('talent_pools');
 
         });
