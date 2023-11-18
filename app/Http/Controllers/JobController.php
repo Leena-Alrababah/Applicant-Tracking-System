@@ -135,7 +135,7 @@ class JobController extends Controller
         $applicant->save();
 
 
-        Alert::success('Success', 'Application confirmed!');
+        Alert::success('Success', 'Your Application is Submitted!');
 
         return redirect()->route('index');
     }

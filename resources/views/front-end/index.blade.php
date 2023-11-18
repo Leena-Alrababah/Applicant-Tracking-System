@@ -12,19 +12,16 @@
 </head>
 
 <body>
-  @include('sweetalert::alert')
-
     <div class="container">
-
         <div class="row">
-
             @foreach ($jobs as $job)
                 @if ($job->status == 'open')
                     <div class="col-lg-4">
                         <div class="card">
-                            <img src="{{ $job->image }}" alt="Card Image" class="card-image" />
+                            <img src="{{ $job->image }}" alt="Card Image" class="card-image" style="width: 80%; margin-left:30px" />
                             <div class="card-content">
-                                <h2><a href="{{ route('showSingleJob', ['id' => $job->id]) }}">{{ $job->title }}</a></h2>
+                                <h2><a href="{{ route('showSingleJob', ['id' => $job->id]) }}">{{ $job->title }}</a>
+                                </h2>
 
                                 <p class="text-dark">{{ $job->location }}</p>
                                 <p class="text-warning"><strong>{{ $job->status }}</strong> to
@@ -34,18 +31,11 @@
                     </div>
                 @endif
             @endforeach
-
         </div>
-
-
     </div>
+    @include('sweetalert::alert')
 
-
-
-
-    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
 </body>
 
 </html>

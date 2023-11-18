@@ -28,7 +28,7 @@
             <h5>Requirements</h5>
             <ul>
                 @foreach ($job->requirements as $requirement)
-                    <li><strong>{{ $requirement->title }}</strong> {{ $requirement->text }}</li>
+                    <li><strong>{{ $requirement->title }}:</strong> {{ $requirement->text }}</li>
                 @endforeach
 
             </ul>
@@ -36,11 +36,11 @@
             <h5>Benefits</h5>
             <ul>
                 @foreach ($job->benefits as $benefit)
-                    <li><strong>{{ $benefit->title }}</strong> {{ $benefit->text }}</li>
+                    <li><strong>{{ $benefit->title }}:</strong> {{ $benefit->text }}</li>
                 @endforeach
 
             </ul>
-
+<br>
             <center>
                 <button type="button" class="btn btn-outline-primary"><a
                         href="{{ route('showApplicationForm', ['id' => $job->id]) }}">Apply Now</a></button>

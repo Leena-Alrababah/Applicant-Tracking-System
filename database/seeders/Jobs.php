@@ -19,7 +19,7 @@ class Jobs extends Seeder
             'title' => 'Software Engineer',
             'description' => 'We are looking for a skilled software engineer...',
             'location' => 'Amman, Jordan',
-            'image' => 'no-image.jpg', 
+            'image' => 'front-end/images/logo.png', 
             'application_deadline' => now()->addWeek(),
             'status' => 'open',
         ]);
@@ -28,7 +28,7 @@ class Jobs extends Seeder
             'title' => 'Frontend Developer',
             'description' => 'Join our team as a frontend developer and create amazing user interfaces.',
             'location' => 'Remote',
-            'image' => 'no-image.jpg', 
+            'image' => 'front-end/images/logo.png', 
             'application_deadline' => now()->addWeeks(2),
             'status' => 'open',
         ]);
@@ -37,7 +37,7 @@ class Jobs extends Seeder
             'title' => 'Data Scientist',
             'description' => 'Exciting opportunity for a data scientist to work on cutting-edge projects.',
             'location' => 'San Francisco, USA',
-            'image' => 'no-image.jpg', 
+            'image' => 'front-end/images/logo.png', 
             'application_deadline' => now()->addWeeks(3),
             'status' => 'open',
         ]);
@@ -45,8 +45,8 @@ class Jobs extends Seeder
         Job::create([
             'title' => 'UI/UX Designer',
             'description' => 'We are seeking a talented UI/UX designer to join our creative team.',
-            'location' => 'London, UK',
-            'image' => 'no-image.jpg', 
+            'location' => 'Amman, Jordan',
+            'image' => 'front-end/images/logo.png', 
             'application_deadline' => now()->addWeeks(4),
             'status' => 'open',
         ]);
