@@ -33,7 +33,7 @@ class JobController extends Controller
      */
     public function create()
     {
-       
+
         return view('admin.pages.jobs.create');
     }
 
@@ -61,7 +61,7 @@ class JobController extends Controller
         if ($request->hasFile('image')) {
             $imagePath = $this->uploadImage($request, 'image', 'uploads');
             $job->image = $imagePath;
-        } 
+        }
 
         $job->title = $request->title;
         $job->description = $request->description;
@@ -76,7 +76,6 @@ class JobController extends Controller
         ];
 
         return redirect()->route('jobs.index')->with($notification);
-      
     }
 
 
@@ -118,7 +117,6 @@ class JobController extends Controller
             'phone' => ['nullable', 'max:20'],
             'linkedin_profile' => ['required', 'url'],
             'resume' => ['required', 'file', 'mimes:pdf,doc,docx'],
-            'job_id' => ['required', 'exists:jobs,id'],
         ]);
 
         $applicant = new Applicant();
@@ -127,14 +125,6 @@ class JobController extends Controller
             $resumePath = $this->uploadResume($request, 'resume', 'resumes');
             $applicant->resume = $resumePath;
         }
-        // $filename = '';
-
-        // if ($request->hasFile('resume')) {
-        //     $filename = $request->getSchemeAndHttpHost() . '/resumes/' . time() . '.' . $request->resume->extension();
-        //     $request->resume->move(public_path('/resumes/'), $filename);
-        // } 
-
-        // $applicant->resume = $filename;
 
         $applicant->name = $request->name;
         $applicant->email = $request->email;
@@ -144,11 +134,11 @@ class JobController extends Controller
 
         $applicant->save();
 
-        
+
         Alert::success('Success', 'Application confirmed!');
 
-        return redirect()->back();
-    } 
+        return redirect()->route('index');
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -181,7 +171,7 @@ class JobController extends Controller
 
         $job = Job::findOrFail($id);
 
-    
+
         $imagePath = $this->updateImage($request, 'image', 'uploads', $job->image);
         $job->image = empty($imagePath) ? $job->image : $imagePath;
 
