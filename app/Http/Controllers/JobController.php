@@ -123,18 +123,18 @@ class JobController extends Controller
 
         $applicant = new Applicant();
 
-        // if ($request->hasFile('resume')) {
-        //     $resumePath = $this->uploadResume($request, 'resume', 'resumes');
-        //     $applicant->resume = $resumePath;
-        // }
-        $filename = '';
-
         if ($request->hasFile('resume')) {
-            $filename = $request->getSchemeAndHttpHost() . '/resumes/' . time() . '.' . $request->resume->extension();
-            $request->resume->move(public_path('/resumes/'), $filename);
-        } 
+            $resumePath = $this->uploadResume($request, 'resume', 'resumes');
+            $applicant->resume = $resumePath;
+        }
+        // $filename = '';
 
-        $applicant->resume = $filename;
+        // if ($request->hasFile('resume')) {
+        //     $filename = $request->getSchemeAndHttpHost() . '/resumes/' . time() . '.' . $request->resume->extension();
+        //     $request->resume->move(public_path('/resumes/'), $filename);
+        // } 
+
+        // $applicant->resume = $filename;
 
         $applicant->name = $request->name;
         $applicant->email = $request->email;

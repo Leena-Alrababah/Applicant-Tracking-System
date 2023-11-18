@@ -48,13 +48,12 @@
                         <div class="card-header pb-0">
                             <div class="app-brand w-100 d-flex justify-content-center border-bottom-0">
                                 <a class="w-auto pl-0" href="/index.html">
-                                    <img src="{{ asset('admin/images/logo.png') }}" alt="Mono">
+                                    <img src="{{ asset('front-end/images/logo.png') }}" alt="Mono" style="height: 70px">
                                     <span class="brand-name text-dark">Admin Login</span>
                                 </a>
                             </div>
                         </div>
                         <div class="card-body px-5 pb-5 pt-0">
-
                             <h4 class="text-dark mb-6 text-center">Sign in</h4>
 
                             <form action="{{ route('login') }}" method="POST">
@@ -73,9 +72,13 @@
                                         <input type="password" name="password" class="form-control input-lg"
                                             placeholder="Password">
                                     </div>
-                                    <div class="col-md-12">
+                                    <center>
+                                        <div class="col-md-12" style="margin-left: 60px">
                                         <button type="submit" class="btn btn-primary btn-pill mb-4">Sign In</button>
                                     </div>
+                                    </center>
+
+                                    
                                 </div>
                             </form>
                         </div>
