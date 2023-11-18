@@ -40,7 +40,7 @@
                 @endforeach
 
             </ul>
-<br>
+            <br>
             <center>
                 <button type="button" class="btn btn-outline-primary"><a
                         href="{{ route('showApplicationForm', ['id' => $job->id]) }}">Apply Now</a></button>
