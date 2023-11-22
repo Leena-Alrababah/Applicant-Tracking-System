@@ -7,7 +7,7 @@
                     <h4>Manage Applicants</h4>
                     <a href="{{ route('applicants.create') }}" class="mb-1 btn btn-outline-primary">
                         <i class=" mdi mdi-checkbox-marked-outline mr-1"></i>
-                        Create New Benefit
+                        Create New Applicant
                     </a>
                 </div>
                 <div class="card-body table-responsive">

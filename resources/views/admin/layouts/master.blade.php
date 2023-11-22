@@ -208,6 +208,7 @@
             @endforeach
         @endif
     </script>
+    
     <script>
         @if (Session::has('message'))
             var type = "{{ Session::get('alert-type', 'info') }}"
@@ -230,6 +231,7 @@
             }
         @endif
     </script>
+
     <script>
         $(document).ready(function() {
             $.ajaxSetup({

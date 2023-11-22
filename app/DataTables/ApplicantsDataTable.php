@@ -26,7 +26,6 @@ class ApplicantsDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
                 $btns = "<div class='btn-group mr-3 mb-4' role='group' aria-label='Basic example'>
-                    <a href='" . route('applicants.edit', $query->id) . "' type='button' class='btn btn-primary'><i class='far fa-edit'></i></a>
                     <a href='" . route('applicants.destroy', $query->id) . "' type='button' class='btn btn-danger delete-item'><i class='fas fa-trash-alt'></i></a>
                 </div>";
                 return $btns;
@@ -34,7 +33,7 @@ class ApplicantsDataTable extends DataTable
 
 
             ->addColumn('resume', function ($query) {
-                $fileUrl = asset('storage/resumes/' . $query->resume);
+                $fileUrl = asset( $query->resume);
                 return '<a href="' . $fileUrl . '" download>Download File</a>';
             })
             ->addColumn('job', function ($query) {

@@ -92,6 +92,8 @@ class JobController extends Controller
         return view('front-end.index', compact('jobs'));
     }
 
+
+
     public function showSingleJop($id)
     {
         $job = Job::with(['benefits', 'requirements'])->findOrFail($id);
@@ -99,15 +101,15 @@ class JobController extends Controller
         return view('front-end.singleJob', compact('job'));
     }
 
+
+
     public function showApplicationForm($id)
     {
-        // Retrieve the job details based on the provided ID
         $job = Job::findOrFail($id);
-
-        // You can pass additional data to the view if needed
 
         return view('front-end.applyForm', compact('job'));
     }
+
 
     public function submitApplicationForm(Request $request, $id)
     {

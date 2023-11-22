@@ -19,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('front-end.index');
 // });
 Route::get('/', [JobController::class, 'show'])->name('index');
-Route::get( '/jobs/{id}', [JobController::class, 'showSingleJop'])->name('showSingleJob');
-Route::get('/jobs/{id}/apply', [JobController::class, 'showApplicationForm'])->name('showApplicationForm');
-Route::post('/jobs/{id}/apply/submit', [JobController::class, 'submitApplicationForm'])->name('submitApplicationForm');
+Route::get( '/job/{id}', [JobController::class, 'showSingleJop'])->name('showSingleJob');
+Route::get('/job/{id}/apply', [JobController::class, 'showApplicationForm'])->name('showApplicationForm');
+Route::post('/job/{id}/apply/submit', [JobController::class, 'submitApplicationForm'])->name('submitApplicationForm');
 
 
 Route::get('/dashboard', function () {

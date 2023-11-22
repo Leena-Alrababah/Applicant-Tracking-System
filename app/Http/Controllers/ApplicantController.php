@@ -74,13 +74,6 @@ class ApplicantController extends Controller
 
 
 
-    public function downloadResume($filename)
-    {
-        $file = storage_path('app/public/resumes/' . $filename);
-
-        return response()->download($file);
-    }
-
     /**
      * Display the specified resource.
      *

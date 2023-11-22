@@ -32,7 +32,7 @@ class CandidatesDataTable extends DataTable
 
 
             ->addColumn('resume', function ($query) {
-                $fileUrl = asset('storage/resumes/' . $query->resume);
+                $fileUrl = asset($query->resume);
                 return '<a href="' . $fileUrl . '" download>Download File</a>';
             })
             ->addColumn('talent pool', function ($query) {
